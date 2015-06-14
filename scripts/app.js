@@ -280,16 +280,18 @@ APP.Main = (function() {
 
   main.addEventListener('scroll', function() {
 
-    var header = $('header');
-    var headerTitles = header.querySelector('.header__title-wrapper');
     var scrollTopCapped = Math.min(70, main.scrollTop);
     var scaleString = 'scale(' + (1 - (scrollTopCapped / 300)) + ')';
 
     // colorizeAndScaleStories(); not ok
 
-    header.style.height = (156 - scrollTopCapped) + 'px';
-    headerTitles.style.webkitTransform = scaleString;
-    headerTitles.style.transform = scaleString;
+    if (scrollTopCapped < 70) {
+      var header = $('header');
+      var headerTitles = header.querySelector('.header__title-wrapper');
+      header.style.height = (156 - scrollTopCapped) + 'px';
+      headerTitles.style.webkitTransform = scaleString;
+      headerTitles.style.transform = scaleString;
+    }
 
     // Add a shadow to the header.
     if (main.scrollTop > 70)
