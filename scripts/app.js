@@ -279,8 +279,8 @@ APP.Main = (function() {
   }
 
   main.addEventListener('scroll', function() {
-
-    var scrollTopCapped = Math.min(70, main.scrollTop);
+    var mainScrollTop = main.scrollTop;
+    var scrollTopCapped = Math.min(70, mainScrollTop);
     var scaleString = 'scale(' + (1 - (scrollTopCapped / 300)) + ')';
 
     // colorizeAndScaleStories(); not ok
@@ -294,7 +294,7 @@ APP.Main = (function() {
     }
 
     // Add a shadow to the header.
-    if (main.scrollTop > 70)
+    if (mainScrollTop > 70)
       document.body.classList.add('raised');
     else
       document.body.classList.remove('raised');
@@ -302,7 +302,7 @@ APP.Main = (function() {
     // Check if we need to load the next batch of stories.
     var loadThreshold = (main.scrollHeight - main.offsetHeight -
         LAZY_LOAD_THRESHOLD);
-    if (main.scrollTop > loadThreshold)
+    if (mainScrollTop > loadThreshold)
       loadStoryBatch();
   });
 
