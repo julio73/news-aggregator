@@ -262,8 +262,8 @@ APP.Main = (function() {
       var mainPosition = main.getBoundingClientRect();
       var scoreLocation = score.getBoundingClientRect().top -
           document.body.getBoundingClientRect().top;
-      var scale = Math.min(1, 1 - (0.05 * ((scoreLocation - 170) / height)));
-      var opacity = Math.min(1, 1 - (0.5 * ((scoreLocation - 170) / height)));
+      var scale = 1 - (0.05 * ((scoreLocation - 170) / height));
+      var opacity = 1 - (0.5 * ((scoreLocation - 170) / height));
 
       var newscale = scale * 40;
       
