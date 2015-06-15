@@ -265,9 +265,10 @@ APP.Main = (function() {
       var scale = Math.min(1, 1 - (0.05 * ((scoreLocation - 170) / height)));
       var opacity = Math.min(1, 1 - (0.5 * ((scoreLocation - 170) / height)));
 
-      score.style.width = (scale * 40) + 'px';
-      score.style.height = (scale * 40) + 'px';
-      score.style.lineHeight = (scale * 40) + 'px';
+      var newscale = scale * 40;
+      score.style.width = newscale + 'px';
+      score.style.height = newscale + 'px';
+      score.style.lineHeight = newscale + 'px';
 
       // Now figure out how wide it is and use that to saturate it.
       scoreLocation = score.getBoundingClientRect();
