@@ -259,7 +259,6 @@ APP.Main = (function() {
 
       // Base the scale on the y position of the score.
       var height = main.offsetHeight;
-      var mainPosition = main.getBoundingClientRect();
       var scoreLocation = score.getBoundingClientRect().top;
       var scale = 1 - (0.05 * ((scoreLocation - 170) / height));
       var opacity = 1 - (0.5 * ((scoreLocation - 170) / height));
