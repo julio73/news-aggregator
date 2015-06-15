@@ -278,8 +278,6 @@ APP.Main = (function() {
     var scrollTopCapped = Math.min(70, mainScrollTop);
     var scaleString = 'scale(' + (1 - (scrollTopCapped / 300)) + ')';
 
-    // colorizeAndScaleStories(); not ok
-
     if (scrollTopCapped < 70) {
       var header = $('header');
       var headerTitles = header.querySelector('.header__title-wrapper');
