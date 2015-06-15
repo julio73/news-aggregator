@@ -267,7 +267,7 @@ APP.Main = (function() {
       var newscale = scale * 40;
       
       // Now figure out how wide it is and use that to saturate it.
-      var saturation = (100 * ((newscale - 38) / 2));
+      var saturation = 50 * (newscale - 38);
 
       score.style.backgroundColor = 'hsl(42, ' + saturation + '%, 50%)';
       title.style.opacity = opacity;
