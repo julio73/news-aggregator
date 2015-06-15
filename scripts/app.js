@@ -75,11 +75,9 @@ APP.Main = (function() {
 
       // Tick down. When zero we can batch in the next load.
       storyLoadCount--;
-    }
 
-    // Colorize on complete.
-    if (storyLoadCount === 0)
-      colorizeAndScaleStories();
+      colorizeStory(story);
+    }
   }
 
   function onStoryClick(details) {
@@ -241,36 +239,24 @@ APP.Main = (function() {
     setTimeout(animate, 4);
   }
 
-  /**
-   * Does this really add anything? Can we do this kind
-   * of work in a cheaper way?
-   */
-  function colorizeAndScaleStories() {
+  function colorizeStory(story) {
 
-    var storyElements = document.querySelectorAll('.story');
+    var score = story.querySelector('.story__score');
+    var title = story.querySelector('.story__title');
 
-    // It does seem awfully broad to change all the
-    // colors every time!
-    for (var s = 0; s < storyElements.length; s++) {
+    // Base the scale on the y position of the score.
+    var height = main.offsetHeight;
+    var scoreLocation = score.getBoundingClientRect().top;
+    var scale = 1 - (0.05 * ((scoreLocation - 170) / height));
+    var opacity = 1 - (0.5 * ((scoreLocation - 170) / height));
 
-      var story = storyElements[s];
-      var score = story.querySelector('.story__score');
-      var title = story.querySelector('.story__title');
+    var newscale = scale * 40;
 
-      // Base the scale on the y position of the score.
-      var height = main.offsetHeight;
-      var scoreLocation = score.getBoundingClientRect().top;
-      var scale = 1 - (0.05 * ((scoreLocation - 170) / height));
-      var opacity = 1 - (0.5 * ((scoreLocation - 170) / height));
+    // Now figure out how wide it is and use that to saturate it.
+    var saturation = 50 * (newscale - 38);
 
-      var newscale = scale * 40;
-      
-      // Now figure out how wide it is and use that to saturate it.
-      var saturation = 50 * (newscale - 38);
-
-      score.style.backgroundColor = 'hsl(42, ' + saturation + '%, 50%)';
-      title.style.opacity = opacity;
-    }
+    score.style.backgroundColor = 'hsl(42, ' + saturation + '%, 50%)';
+    title.style.opacity = opacity;
   }
 
   main.addEventListener('scroll', function() {
