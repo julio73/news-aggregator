@@ -160,73 +160,22 @@ APP.Main = (function() {
     inDetails = true;
 
     var storyDetails = $('#sd-' + id);
-    var left = null;
 
     if (!storyDetails)
       return;
 
     document.body.classList.add('details-active');
-
-    function animate () {
-
-      // Find out where it currently is.
-      var storyDetailsPosition = storyDetails.getBoundingClientRect();
-
-      // Set the left value if we don't have one already.
-      if (left === null)
-        left = storyDetailsPosition.left;
-
-      // Now figure out where it needs to go.
-      left += (0 - storyDetailsPosition.left) * 0.1;
-
-      // Set up the next bit of the animation if there is more to do.
-      if (Math.abs(left) > 0.5)
-        requestAnimationFrame(animate);
-      else
-        left = 0;
-
-      // And update the styles. Wait, is this a read-write cycle?
-      // I hope I don't trigger a forced synchronous layout!
-      storyDetails.style.left = left + 'px';
-    }
-
-    requestAnimationFrame(animate);
   }
 
   function hideStory(id) {
 
     if (!inDetails)
       return;
-
+    
     var storyDetails = $('#sd-' + id);
-    var left = 0;
-
     document.body.classList.remove('details-active');
 
-    function animate () {
-
-      // Find out where it currently is.
-      var mainPosition = main.getBoundingClientRect();
-      var storyDetailsPosition = storyDetails.getBoundingClientRect();
-      var target = mainPosition.width + 100;
-
-      // Now figure out where it needs to go.
-      left += (target - storyDetailsPosition.left) * 0.1;
-
-      // Set up the next bit of the animation if there is more to do.
-      if (Math.abs(left - target) > 0.5) {
-        requestAnimationFrame(animate);
-      } else {
-        left = target;
-        inDetails = false;
-      }
-
-      // And update the styles. Wait, is this a read-write cycle?
-      // I hope I don't trigger a forced synchronous layout!
-      storyDetails.style.left = left + 'px';
-    }
-
-    requestAnimationFrame(animate);
+    inDetails = false;
   }
 
   function colorizeStory(story) {
