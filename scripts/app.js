@@ -202,7 +202,6 @@ APP.Main = (function() {
     var left = 0;
 
     document.body.classList.remove('details-active');
-    storyDetails.style.opacity = 0;
 
     function animate () {
 
