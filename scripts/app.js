@@ -166,7 +166,6 @@ APP.Main = (function() {
       return;
 
     document.body.classList.add('details-active');
-    storyDetails.style.opacity = 1;
 
     function animate () {
 
