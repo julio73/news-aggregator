@@ -292,7 +292,7 @@ main.loading {
   margin-top: -48px;
   background: url(../images/ic_close_24px.svg) center center no-repeat;
   border: none;
-  text-indent: -10000px;
+  text-indent: -100px;
   border-radius: 0;
 }
 
