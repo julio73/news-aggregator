@@ -193,10 +193,10 @@ main.loading {
   text-align: center;
   line-height: 40px;
 
-  box-shadow:
+/*   box-shadow:
       0px 2px 5px 0px rgba(0, 0, 0, 0.06),
       0px 2px 5px 0px rgba(0, 0, 0, 0.08),
-      0px 2px 7px 0px rgba(0, 0, 0, 0.10);
+      0px 2px 7px 0px rgba(0, 0, 0, 0.10); */
 }
 
 .story-details {
@@ -226,20 +226,20 @@ main.loading {
   height: 100%;
   background: white;
   z-index: 2;
-  box-shadow:
+/*   box-shadow:
       0px 2px 5px 0px rgba(0, 0, 0, 0.06),
       0px 2px 5px 0px rgba(0, 0, 0, 0.08),
-      0px 2px 7px 0px rgba(0, 0, 0, 0.10);
+      0px 2px 7px 0px rgba(0, 0, 0, 0.10); */
 
   overflow: hidden;
   
   transition: transform .3s ease;
 }
 
-/* .story-details * {
+.story-details * {
   will-change: transform;
   transform: translateZ(0);
-} */
+}
 
 .story-details__content {
   -webkit-flex: 1;
